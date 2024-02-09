@@ -1,0 +1,10 @@
+.dataTables_paginate a {
+    padding: 8px !important;
+    background-color: lightgray;
+    color: black;
+    cursor: pointer;
+}
+.container {
+    max-width: 960px;
+}
+.lh-condensed { line-height: 1.25; }

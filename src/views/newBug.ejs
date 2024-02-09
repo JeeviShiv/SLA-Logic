@@ -1,0 +1,60 @@
+<header><%-include('header');%></header>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>New bug !!!</h2>
+      </div>
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <form class="needs-validation" method="POST" action="/addBug" novalidate>
+          <div class="col-md-12 order-md-1">
+                <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" class="form-control" id="title" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                    Valid Title is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="description">Description</label>
+                    <input type="text" name="description" class="form-control" id="description" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                    Valid description is required.
+                    </div>
+                </div>
+                </div>
+
+                <div class="mb-3">
+                <label for="dateCreated">Date </label>
+                <input type="text" class="form-control" name="dateCreated" readonly="true" id="dateCreated" value="<%-helper.formatDate()%>">
+                </div>
+
+                <div class="mb-3">
+                  <label for="timeCreated">Time </label>
+                  <input type="text" class="form-control"  name="timeCreated" readonly="true" id="timeCreated" value="<%-helper.formatTime()%>">
+                </div>
+
+                <div class="mb-3">
+                <label for="assigne">Assigne</label>
+                <select name="assigne" class="form-control" id="assigne" required>
+                  <option value="">--Select--</option>
+                  <option value="John">John</option>
+                  <option value="Willam">Willam</option>
+                  <option value="Jacob">Jacob</option>
+                  <option value="Liyana">Liyana</option>
+                  <option value="Yegan">Yegan</option>
+                </select>
+                <div class="invalid-feedback">
+                    Please enter your assigne for a bug.
+                </div>
+                </div>
+          </div>
+        <hr class="mb-4">       
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+  <footer><%-include('footer');%></footer>
+
+  

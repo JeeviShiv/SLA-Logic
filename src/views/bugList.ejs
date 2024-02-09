@@ -1,0 +1,58 @@
+<header><%-include('header');%></header>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Bug List</h2>
+      </div>
+        <div class="row">
+            <div class="col-md-12 order-md-1">   
+                <table id="example" class="table" style="width:100%">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Assigne</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Time Created</th>
+                    <th scope="col">Left over days</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%if(data.length==0){%>
+                    <tr>
+                        <td colspan="7">No records found</td>
+                    </tr>
+                <%}else{%>
+                <%for(i=0;i<data.length;i++){
+                let className='';
+                var dateTime = data[i].dateCreated+' '+data[i].timeCreated;
+                var available = helper.availableDays(dateTime);
+                if(available.due){ className="table-danger"; 
+                                   spanClass="danger"
+                                   timetodo ='-'+available.label;}
+                             else{ timetodo= available.label;
+                                   spanClass="primary";
+                                } %>
+                <tr class="<%-className%>">
+                    <th scope="row"><%-i+1%></th>
+                    <td><%-data[i].title;%></td>
+                    <td><%-data[i].description%></td>
+                    <td><%-data[i].assigne%></td>
+                    <td><%-data[i].dateCreated%></td>
+                    <td><%-data[i].timeCreated%></td>
+                    <td><span class="badge badge-<%-spanClass%>"><%-timetodo%></span></td>
+                </tr>
+            <%}}%> 
+                </tbody>
+            </table>
+        </div>
+  </div>
+</div>
+
+<footer><%-include('footer');%></footer>
+
+ <!-- var statusClass = '';
+                var status = helper.getOrderStatus(data[i].orderedDate);
+                if(status=='Delivered'){statusClass='success'}
+                else if(status=='Dispatched'){statusClass='secondary'}
+                else statusClass='warning'; -->
